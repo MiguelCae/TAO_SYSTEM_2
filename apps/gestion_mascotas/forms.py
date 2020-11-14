@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import ModelForm
+from django.forms import ModelForm, Textarea, DateTimeInput, TextInput, Select, NumberInput
 
 
 #Models
@@ -11,7 +11,14 @@ from .models import mascota
 class RegistroMascota(ModelForm):
     class Meta:
         model = mascota
-        fields = [
+        date = forms.DateTimeField(
+        input_formats=['%d/%m/%Y %H:%M'],
+        widget=forms.DateTimeInput(attrs={
+            'class': 'form-control datetimepicker-input',
+            'data-target': '#datetimepicker1'
+        })
+    )
+        fields = (
             'nombre',
             'especie', 
             'raza',
@@ -22,6 +29,21 @@ class RegistroMascota(ModelForm):
             'estado',
             'descripcion_mascota',
             #'foto_mascota',
-            ]
+        )
+        widgets = {
+            'nombre':  TextInput(attrs={'class': 'form-control'}),
+            'especie':  Select(attrs={'class': 'form-control'}),
+            'raza' :  TextInput(attrs={'class': 'form-control'}),
+            'tamaño':  Select(attrs={'class': 'form-control'}),
+            'sexo':  Select(attrs={'class': 'form-control'}),
+            'edad_aproximada' :  NumberInput(attrs={'class': 'form-control'}),
+            'fecha_recate':forms.DateTimeInput(
+                format='%d/%m/%Y %H:%M:%S', 
+                attrs={'class':'datepicker', 
+                       'autocomplete': 'off'}),
+            'estado':  TextInput(attrs={'class': 'form-control'}),
+            'descripcion_mascota': Textarea(attrs={'class': 'form-control','cols': 40, 'rows': 5}),
+        }
+        
         
 

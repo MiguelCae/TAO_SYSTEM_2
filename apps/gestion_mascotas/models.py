@@ -33,7 +33,7 @@ class mascota(models.Model):
         choices=select_sexo
         )
     edad_aproximada = models.IntegerField()
-    fecha_rescate = models.DateField()
+    fecha_rescate = models.DateTimeField()
     estado = models.CharField(max_length=50, null= True)
     descripcion_mascota = models.CharField(max_length=50)
     foto_mascota = models.ImageField(upload_to='static/img')

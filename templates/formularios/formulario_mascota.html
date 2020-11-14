@@ -18,26 +18,14 @@
                             {% csrf_token %}
                             <div class="form-row ">
                                 <div class="form-grop col-md-6">
-                                    <label for="{{ fields.nombre }}">Nombre mascota</label>
-
-
-
-                                
-                                    {{ form }}
-
-
+                                    <label for="{{ fields.nombre }}"></label>
+                                        {{ form }}
                                     <div class="form-row "></div>
-                                    <div class="form-grop col-md-6">
-                                        <label for="{{ fields.especie }}">Especie mascota</label>
-
-                                        {{ form_mascota.especie }}
-
-                                    </div>
                                 </div>
                             </div>
-                            
-                                
-                            <input type="submit" value="Save" class="default" name="_save">
+                          
+                              <br>
+                             <input type="submit" value="Guargar" class="btn btn-primary" name="_save">
                         </form>
                         {{ mesaje }} 
                     </div>
