@@ -1,0 +1,35 @@
+{% extends 'base/base_workflow.html' %}
+
+
+
+{% block desk %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+  <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information
+    about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables
+      documentation</a>.</p>
+  <form method="POST">
+    {% csrf_token %}
+    <h3>¿Desea eliminar el registro de {{ QS_mascota.nombre }}?</h3>
+    <button class="btn btn-danger"  type="submit">Sí</button>
+    <a class="btn btn-primary"  href=" {% url 'list' %} ">No</a>
+
+  </form>
+
+ 
+
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+
+
+
+
+{% endblock %}

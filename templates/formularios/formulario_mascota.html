@@ -1,0 +1,49 @@
+{% extends 'base/base_workflow.html' %}
+
+{% block desk %}
+<div class="container -lg mr-tp-3 ">
+    <div class="card shadow-lg col-md-8 pr-0 ">
+        {% load static %}
+        <img src="{% static 'img/registro.png' %}" class="img-fluid card-img-top" width="100px" height="100px"
+            alt="My image">
+        <div class="card-header">
+            <div class="card-header">
+                <strong>
+                    <h1>Registro Mascota</h1>
+                </strong>
+                <div class="card-body">
+                    <div class="row no-gutters d-flex flex-column ">
+
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-row ">
+                                <div class="form-grop col-md-6">
+                                    <label for="{{ fields.nombre }}">Nombre mascota</label>
+
+
+
+                                
+                                    {{ form }}
+
+
+                                    <div class="form-row "></div>
+                                    <div class="form-grop col-md-6">
+                                        <label for="{{ fields.especie }}">Especie mascota</label>
+
+                                        {{ form_mascota.especie }}
+
+                                    </div>
+                                </div>
+                            </div>
+                            
+                                
+                            <input type="submit" value="Save" class="default" name="_save">
+                        </form>
+                        {{ mesaje }} 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}

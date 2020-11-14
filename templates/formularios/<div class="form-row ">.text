@@ -1,0 +1,53 @@
+<div class="form-row ">
+    <div class="form-grop col-md-6">
+        <label for="{{ fields.raza }}">Raza </label><br>
+        {{ form_mascota.raza }}
+
+    </div>
+</div>
+<div class="form-row ">
+    <div class="form-grop col-md-6">
+        <label for="{{ fields.tamaño }}">Tamaño mascota</label>
+        {{ form_mascota.tamaño }}
+
+    </div>
+</div>
+<div class="form-row ">
+    <div class="form-grop col-md-6">
+        <label for="{{ fields.sexo }}">Sexo mascota</label>
+        {{ form_mascota.sexo }}
+
+
+    </div>
+    <div class="form-row ">
+        <div class="form-grop col-md-6">
+            <label for="{{ fields.edad_aproximada }}">Edad aproximada</label>
+            {{ form_mascota.edad_aproximada }}
+
+        </div>
+    </div>
+    <div class="form-row ">
+        <div class="form-grop col-md-6">
+            <label for="{{ fields.fecha_rescate }}">Fecha de rescate</label>
+            {{ form_mascota.fecha_rescate }}
+
+        </div>
+    </div>
+    <div class="form-row ">
+        <div class="form-grop col-md-6">
+            <label for="{{ fields.estado }}">Estado mascota</label>
+            {{ form_mascota.estado }}
+         </div>
+    </div>
+    <div class="form-row ">
+        <div class="form-grop col-md-6">
+            <label for="{{ fields.descripcion_mascota }}">Descripción Mascota</label>
+            {{ form_mascota.descripcion_mascota }}
+         </div>
+    </div>
+    <div class="form-row ">
+        <div class="form-grop col-md-6">
+            <label for="{{ fields.foto_mascota }}">Foto mascota</label>
+            {{ form_mascota.foto_mascota }}
+         </div>
+    </div>
