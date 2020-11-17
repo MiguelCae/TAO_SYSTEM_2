@@ -3,6 +3,11 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.views.generic import ListView, CreateView
 from django.urls import reverse
 
+from django.contrib import messages
+
+#Login required
+from django.contrib.auth.decorators import login_required
+
  #views class
 from django.views.generic import ListView
 
@@ -18,6 +23,7 @@ def log(request):
     log_in = "Login"
     return HttpResponse(log_in)
 
+@login_required
 def mascota_list(request):
     QS_mascota = mascota.objects.all()
     contexto = {'mascotas' : QS_mascota}
@@ -25,31 +31,30 @@ def mascota_list(request):
 
 
 
-
+@login_required
 def registro_mascota_view(request):
     if request.method == 'POST':
-        form = RegistroMascota(request.POST or None)
+        form = RegistroMascota(request.POST or None, request.FILES)
         if form.is_valid():
             form.save()
-    #context = {
-            #'form': form
-    #}
-            return HttpResponseRedirect('list')
+        return HttpResponseRedirect('list')
     else:
         form = RegistroMascota()
     return render (request,'formularios/formulario_mascota.html', {'form': form})
 
+@login_required
 def mascota_edit(request, id):
     QS_mascota = mascota.objects.get(id = id)
     if request.method == 'GET':
         form = RegistroMascota(instance=QS_mascota)
     else:
-        form = RegistroMascota(request.POST, instance=QS_mascota)
+        form = RegistroMascota(request.POST,request.FILES,instance=QS_mascota)
         if form.is_valid():
             form.save()
             return  redirect('list')
     return render (request,'formularios/formulario_mascota.html', {'form': form})
-
+    
+@login_required
 def mascota_delete(request, id):
     QS_mascota = mascota.objects.get(id = id)
     if request.method == 'POST':

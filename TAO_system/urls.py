@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
+from django.contrib import admin, auth
 from django.urls import path
 
 from apps.adopcion import views as posts_views
@@ -24,6 +24,8 @@ from apps.gestion_mascotas import views as mascota_list
 from apps.gestion_mascotas import views as registro_mascota_view 
 from apps.gestion_mascotas import views as mascota_edit
 from apps.gestion_mascotas import views as mascota_delete 
+from django.conf.urls import include
+
 
 
 #Control de usuarios de usuarios
@@ -37,24 +39,26 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
 #Url de pagina principal, publica
-    path('', posts_views.list_posts),
+    path('', posts_views.list_posts, name='Home'),
     path('about/', posts_views.about),
     path('adopt-info/', posts_views.adopt_info),
     path('services/', posts_views.services),
     path('contact/', posts_views.contact),
-    path('login/', user_views.login_view, name='login'),
+    path('accounts/profile/', user_views.login_view, name='log'),
     
 
 
 # Url's para administracion de la aplicación
     path('tao_log/', gest_mascotas.log),
-    path('tao_admin/list/', gest_mascotas.mascota_list, name='list'),
-    path('tao_admin/registro-mascota', gest_mascotas.registro_mascota_view, name='registro_mascota'),
-    path('tao_admin/editar-mascota/<int:id>/', gest_mascotas.mascota_edit, name='editar_mascota'),
+    path('?next=/tao_admin/list/', gest_mascotas.mascota_list, name='list'),
+    path('?next=/tao_admin/registro-mascota', gest_mascotas.registro_mascota_view, name='registro_mascota'),
+    path('?next=/tao_admin/editar-mascota/<int:id>/', gest_mascotas.mascota_edit, name='editar_mascota'),
     path('tao_admin/eliminar-mascota/<int:id>/', gest_mascotas.mascota_delete, name='eliminar_mascota'),
 
 
+]
 
-
-
+#Add Django site authentication urls (for login, logout, password management)
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

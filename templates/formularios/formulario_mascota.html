@@ -1,5 +1,7 @@
 {% extends 'base/base_workflow.html' %}
 
+<!-- {% load crispy_forms_tags %} -->
+
 {% block desk %}
 <div class="container -lg mr-tp-3 ">
     <div class="card shadow-lg col-md-8 pr-0 ">
@@ -14,18 +16,18 @@
                 <div class="card-body">
                     <div class="row no-gutters d-flex flex-column ">
 
-                        <form method="POST">
+                        <form method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="form-row ">
                                 <div class="form-grop col-md-6">
                                     <label for="{{ fields.nombre }}"></label>
-                                        {{ form }}
+                                        {{ form.as_p}}
                                     <div class="form-row "></div>
                                 </div>
                             </div>
-                          
+                            
                               <br>
-                             <input type="submit" value="Guargar" class="btn btn-primary" name="_save">
+                             <input type="submit" value="Guardar" class="btn btn-primary" name="_save">
                         </form>
                         {{ mesaje }} 
                     </div>

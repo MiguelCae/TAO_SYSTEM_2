@@ -14,6 +14,13 @@ select_sexo = [
     ('Hembra', 'Hembra'),
     ('Macho', 'Macho'),
 ]
+select_estado = [
+    ('En_custodia','En custodia'),
+    ('En_tratamiento','En tratamiento'),
+    ('En_adopcion','En adopción'),
+    ('Adoptado','Adoptado'),
+
+]
 
 
 # Create your models here.
@@ -34,7 +41,10 @@ class mascota(models.Model):
         )
     edad_aproximada = models.IntegerField()
     fecha_rescate = models.DateTimeField()
-    estado = models.CharField(max_length=50, null= True)
+    estado = models.CharField(max_length=20,
+        blank=False, null= False,
+        choices=select_estado
+        )
     descripcion_mascota = models.CharField(max_length=50)
     foto_mascota = models.ImageField(upload_to='static/img')
     created = models.DateTimeField(auto_now=True)
