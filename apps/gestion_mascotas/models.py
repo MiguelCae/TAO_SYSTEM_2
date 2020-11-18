@@ -45,7 +45,7 @@ class mascota(models.Model):
         blank=False, null= False,
         choices=select_estado
         )
-    descripcion_mascota = models.CharField(max_length=50)
+    descripcion_mascota = models.CharField(max_length=120)
     foto_mascota = models.ImageField(upload_to='static/img')
     created = models.DateTimeField(auto_now=True)
 

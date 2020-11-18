@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from apps.gestion_mascotas.models import mascota
 
 # Create your views here.
 
 def list_posts(request):
-    return render(request, 'post_mascotas/index.html')
+    QS_post = mascota.objects.all()
+    contexto = {'mascotas' : QS_post}
+    return render(request, 'post/post.html', contexto)
 
 def about(request):
     about_us = "Sobre nosotros"

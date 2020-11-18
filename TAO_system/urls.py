@@ -45,6 +45,7 @@ urlpatterns = [
     path('services/', posts_views.services),
     path('contact/', posts_views.contact),
     path('accounts/profile/', user_views.login_view, name='log'),
+    path('accounts/register', user_views.Registro_view.as_view(), name ='registro'),
     
 
 

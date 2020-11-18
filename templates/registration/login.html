@@ -45,6 +45,9 @@
 
                                     {% block content %}
 
+                                    {% load crispy_forms_tags %}
+                                    
+
                                     {% if form.errors %}
                                     <p>Tu nombre de usuario y contraseña no coinciden. Inténtalo de nuevo.</p>
                                     {% endif %}
