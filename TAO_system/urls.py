@@ -20,11 +20,15 @@ from apps.adopcion import views as posts_views
 from apps.gestion_mascotas import views as gest_mascotas
 from apps.gestion_mascotas import views as gest_mascotas
 #from apps.gestion_mascotas import views as pruebas, registro_mascota
-from apps.gestion_mascotas import views as mascota_list
 from apps.gestion_mascotas import views as registro_mascota_view 
 from apps.gestion_mascotas import views as mascota_edit
 from apps.gestion_mascotas import views as mascota_delete 
 from django.conf.urls import include
+
+from apps.control_usuarios import views as send_email
+from apps.gestion_mascotas import views as import_data
+
+from apps.adopcion.views import mascotaListView
 
 
 
@@ -39,7 +43,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
 #Url de pagina principal, publica
-    path('', posts_views.list_posts, name='Home'),
+    path('',mascotaListView.as_view(), name='Home'),
     path('about/', posts_views.about),
     path('adopt-info/', posts_views.adopt_info),
     path('services/', posts_views.services),
@@ -55,6 +59,8 @@ urlpatterns = [
     path('?next=/tao_admin/registro-mascota', gest_mascotas.registro_mascota_view, name='registro_mascota'),
     path('?next=/tao_admin/editar-mascota/<int:id>/', gest_mascotas.mascota_edit, name='editar_mascota'),
     path('tao_admin/eliminar-mascota/<int:id>/', gest_mascotas.mascota_delete, name='eliminar_mascota'),
+    path('tao_admin/send_mail/', send_email.indexmail, name ='send_mail'),
+    path('tao_admin/import_data/',import_data.importar, name='import_data'),
 
 
 ]

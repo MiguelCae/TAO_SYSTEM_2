@@ -3,6 +3,12 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.views.generic import ListView, CreateView
 from django.urls import reverse
 
+from .sources import Mascota_resource
+
+# Carga inicial de datos
+from tablib import Dataset 
+
+
 from django.contrib import messages
 
 #Login required
@@ -35,6 +41,7 @@ def mascota_list(request):
 def registro_mascota_view(request):
     if request.method == 'POST':
         form = RegistroMascota(request.POST or None, request.FILES)
+        fecha_rescate = request.POST.get('mail')
         if form.is_valid():
             form.save()
         return HttpResponseRedirect('list')
@@ -61,6 +68,26 @@ def mascota_delete(request, id):
         QS_mascota.delete()
         return  redirect('list')
     return render (request,'delete_mascota.html', {'QS_mascota': QS_mascota})
+
+
+# Carga inicial de datos
+def importar(request):
+    if request.method == 'POST':
+      MascotaResource = Mascota_resource()
+      dataset =Dataset()
+      nuevas_mascotas = request.FILES['xlsfile']
+      imported_data = dataset.load(nuevas_mascotas.read())
+      result = MascotaResource.import_data(dataset, dry_run=True)
+      if not result.has_errors():
+          MascotaResource.import_data(dataset, dry_run=False)
+    return render(request, 'carga_datos.html')  
+
+
+
+
+
+
+
     
         
 

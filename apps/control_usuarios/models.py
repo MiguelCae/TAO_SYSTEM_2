@@ -17,6 +17,14 @@ from django.contrib.auth.models import User
 #   rol = models.CharField(max_length=50)
 
 
+select_rol= [
+    ('Colaborador', 'Colaborador'),
+    ('Adoptante', 'Adoptante'),
+    ('Veterinario', 'Veterinario'),
+    ('Director', 'Director'),
+]
+
+
 #Modelo proxy para gestion de usuarios 
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
@@ -31,7 +39,10 @@ class Profile(models.Model):
 #Modelo para Roles de usuarios
 class Rol(models.Model):
     rol_user = models.OneToOneField(User,on_delete=models.CASCADE)
-    rol = models.CharField(max_length=50 )
+    rol = models.CharField(max_length=20,
+        blank=False, null= False,
+        choices=select_rol
+        )
 
 def __str__(self):
     #Return username

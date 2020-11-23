@@ -2,12 +2,24 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from apps.gestion_mascotas.models import mascota
 
+
+from django.views import generic
+
 # Create your views here.
 
-def list_posts(request):
-    QS_post = mascota.objects.all()
-    contexto = {'mascotas' : QS_post}
-    return render(request, 'post/post.html', contexto)
+# def list_posts(request):
+#     QS_post = mascota.objects.all()
+#     contexto = {'mascotas' : QS_post}
+#     return render(request, 'post/post.html', contexto)
+
+
+class mascotaListView(generic.ListView):
+    model = mascota
+    context_object_name = 'mascota'
+    queryset = mascota.objects.filter(estado__icontains='En_adopcion')
+    template_name = "post/post.html"
+
+
 
 def about(request):
     about_us = "Sobre nosotros"

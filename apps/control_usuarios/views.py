@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 
 from django.views.generic import CreateView
@@ -23,4 +26,26 @@ class Registro_view(CreateView):
     form_class = Registro_Form
     def get_success_url(self):
         return reverse('Home')
+
+
+def send_email(mail, asunto, cuerpo):
+    print(mail)
+    print(asunto)
+    print(cuerpo)
+
+
+
+def indexmail(request):
+    if request.method == 'POST':
+        mail = request.POST.get('mail')
+        asunto = request.POST.get('asunto')
+        cuerpo = request.POST.get('cuerpo')
+        send_mail(
+            asunto,
+            cuerpo,
+            settings.EMAIL_HOST_USER,
+            [mail],
+            fail_silently=False
+         )
+    return render(request, 'mail.html', {})
 

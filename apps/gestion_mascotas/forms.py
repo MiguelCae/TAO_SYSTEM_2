@@ -33,7 +33,7 @@ class RegistroMascota(ModelForm):
             'tamaño':  Select(attrs={'class': 'form-control'}),
             'sexo':  Select(attrs={'class': 'form-control'}),
             'edad_aproximada' :  NumberInput(attrs={'class': 'form-control'}),
-            'fecha_recate': DateTimeInput(attrs={'class': 'form-control'}),
+             'fecha_recate': DateTimeInput(attrs={'class': 'form-control'}),
             'estado':  Select(attrs={'class': 'form-control'}),
             'descripcion_mascota': Textarea(attrs={'class': 'form-control','cols': 40, 'rows': 5}),
             

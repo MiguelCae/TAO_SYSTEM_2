@@ -4,8 +4,14 @@
 {% block post %}
     
  <!-- Page Features -->
- {% if mascotas %}
- {% for QS_post in mascotas %}
+ {% if mascota %}
+ 
+ 
+   
+ 
+   
+ {% for queryset in mascota %}
+ 
 
  
    
@@ -16,14 +22,14 @@
         <div class="col-lg-8 col-md-8 mb-4 ">
             <div class="col align-self-center">
           <div class="card shadow-lg h-100">
-            <img class="card-img-top shadow-mb" src="{{ QS_post.foto_mascota }}" alt="">
+            <img class="card-img-top shadow-mb" src="{{ queryset.foto_mascota }}" alt="">
             <div class="card-footer"></div>
             <div class="card-body ">
-              <h4 class="card-title ">{{ QS_post.nombre }}</h4>
-              <p class="card-text">{{ QS_post.descripcion_mascota }}</p>
+              <h4 class="card-title ">{{ queryset.nombre }}</h4>
+              <p class="card-text">{{ queryset.descripcion_mascota }}</p>
             </div>
             <div class="card-footer ">
-              <a href="#" class="btn shadow-lg btn-primary">Adóptame</a>
+              <a href=" {% url 'registro' %} " class="btn shadow-lg btn-primary">Adóptame</a>
             </div>
           </div>
         </div>
@@ -31,7 +37,9 @@
   
 
     </div>
-
+    
     {% endfor %}
+    
+   
     {% endif %}
 {% endblock post %}

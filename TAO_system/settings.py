@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'apps.gestion_mascotas',
     'apps.veterinario',
     'crispy_forms',
+    'import_export',  
+
 
 
 ]
@@ -136,4 +138,16 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
+IMPORT_EXPORT_USE_TRANSACTIONS = True  
+
+
 CRISPY_TEMPLATEPACK = 'bootstrap4'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'tao.system.py@gmail.com'
+EMAL_HOST_PASSWORD = 'oevp kihb qush lgsb'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+DEFAULT_TO_EMAIL = EMAIL_HOST_USER
