@@ -37,6 +37,7 @@ from apps.control_usuarios import views as user_views
 
 
 
+
 urlpatterns = [
 
 # Admin de Django    
@@ -48,16 +49,19 @@ urlpatterns = [
     path('adopt-info/', posts_views.adopt_info),
     path('services/', posts_views.services),
     path('contact/', posts_views.contact),
-    path('accounts/profile/', user_views.login_view, name='log'),
-    path('accounts/register', user_views.Registro_view.as_view(), name ='registro'),
+    path('users/login/', user_views.login_view, name='login'),
+    path('users/logout/', user_views.logout_view, name='logout'),
+    path('users/signup/', user_views.signup_view, name='signup'),
+    # path('accounts/profile/', user_views.login_view, name='log'),
+    # path('accounts/register', user_views.Registro_view.as_view(), name ='registro'),
     
 
 
 # Url's para administracion de la aplicación
     path('tao_log/', gest_mascotas.log),
-    path('?next=/tao_admin/list/', gest_mascotas.mascota_list, name='list'),
-    path('?next=/tao_admin/registro-mascota', gest_mascotas.registro_mascota_view, name='registro_mascota'),
-    path('?next=/tao_admin/editar-mascota/<int:id>/', gest_mascotas.mascota_edit, name='editar_mascota'),
+    path('tao_admin/list/', gest_mascotas.mascota_list, name='list'),
+    path('tao_admin/registro-mascota', gest_mascotas.registro_mascota_view, name='registro_mascota'),
+    path('tao_admin/editar-mascota/<int:id>/', gest_mascotas.mascota_edit, name='editar_mascota'),
     path('tao_admin/eliminar-mascota/<int:id>/', gest_mascotas.mascota_delete, name='eliminar_mascota'),
     path('tao_admin/send_mail/', send_email.indexmail, name ='send_mail'),
     path('tao_admin/import_data/',import_data.importar, name='import_data'),
@@ -66,6 +70,6 @@ urlpatterns = [
 ]
 
 #Add Django site authentication urls (for login, logout, password management)
-urlpatterns += [
-    path('accounts/', include('django.contrib.auth.urls')),
-]
+# urlpatterns += [
+#     path('accounts/', include('django.contrib.auth.urls')),
+# ]

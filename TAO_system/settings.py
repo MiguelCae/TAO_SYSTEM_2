@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 # new
 import os 
 from pathlib import Path
+from apps.control_usuarios.apps import ControlUsuariosConfig
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,6 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,7 +47,8 @@ INSTALLED_APPS = [
     'apps.gestion_mascotas',
     'apps.veterinario',
     'crispy_forms',
-    'import_export',  
+    'import_export',
+    
 
 
 
@@ -89,7 +92,7 @@ WSGI_APPLICATION = 'TAO_system.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'TAO_DB',
+        'NAME': 'TAO_PRUEBAS',
         'USER': 'root',
         'PASSWORD':'admin',
         'HOST': 'localhost',

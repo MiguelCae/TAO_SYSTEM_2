@@ -30,7 +30,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     telefono = models.CharField(max_length=10)
     documento = models.CharField(max_length=20, null=False)
-    edad = models.IntegerField()
+    edad = models.IntegerField(null=True)
     ciudad = models.CharField(max_length=50, null= True)
     direccion = models.CharField(max_length=50, null= True)
     ocupacion = models.CharField(max_length=50)

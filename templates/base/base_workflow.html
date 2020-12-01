@@ -40,7 +40,8 @@
     {% block Sidebar %}
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul style="background: rgb(38,11,88);
+    background: linear-gradient(42deg, rgba(38,11,88,1) 0%, rgba(138,5,190,1) 57%, rgba(38,11,88,1) 100%);" ; class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'list' %}">
@@ -181,7 +182,8 @@
               <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar" aria-label="Search"
                 aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button style="background: rgb(138,5,190);
+                background: linear-gradient(90deg, rgba(138,5,190,1) 0%, rgba(58,50,185,1) 51%, rgba(138,5,190,1) 92%);border: #8a05be;" class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -423,7 +425,8 @@
         <div class="modal-body">Los cambios sin guardar se perderán.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a href="{% url 'Home'%}?next={{request.path}}">Cerrar sesión</a>
+          <!-- ?next={{request.path}} -->
+          <a href="{% url 'logout'%}">Cerrar sesión</a> 
         </div>
       </div>
     </div>
