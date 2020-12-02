@@ -52,8 +52,7 @@ urlpatterns = [
     path('users/login/', user_views.login_view, name='login'),
     path('users/logout/', user_views.logout_view, name='logout'),
     path('users/signup/', user_views.signup_view, name='signup'),
-    # path('accounts/profile/', user_views.login_view, name='log'),
-    # path('accounts/register', user_views.Registro_view.as_view(), name ='registro'),
+
     
 
 
@@ -69,7 +68,4 @@ urlpatterns = [
 
 ]
 
-#Add Django site authentication urls (for login, logout, password management)
-# urlpatterns += [
-#     path('accounts/', include('django.contrib.auth.urls')),
-# ]
+
