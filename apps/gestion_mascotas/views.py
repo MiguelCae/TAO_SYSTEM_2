@@ -49,6 +49,7 @@ def registro_mascota_view(request):
         form = RegistroMascota()
     return render (request,'formularios/formulario_mascota.html', {'form': form})
 
+
 @login_required
 def mascota_edit(request, id):
     QS_mascota = mascota.objects.get(id = id)

@@ -1,0 +1,41 @@
+{% extends 'veterinario/list_registro_veterinario.html' %}
+
+<!-- {% load crispy_forms_tags %} -->
+
+{% block desk %}
+<div class="container -lg mr-tp-3 ">
+    <div class="card shadow-lg col-md-8 pr-0 ">
+        {% load static %}
+        <img src="{% static 'img/registro.png' %}" class="img-fluid card-img-top" width="100px" height="100px"
+            alt="My image">
+        <div class="card-header">
+            <div class="card-header">
+                <strong>
+                    <h1>Registro Mascota</h1>
+                </strong>
+                <div class="card-body">
+                    <div class="row no-gutters d-flex flex-column ">
+
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-row ">
+                                <div class="form-grop col-md-6">
+                                    <label for="{{ fields.nombre }}"></label>
+                                        {{ form.as_p}}
+                                        <label for="Fecha de rescate">Fecha de rescate</label>
+                                        <input type="date" name="fecha_rescate" id="">
+                                    <div class="form-row "></div>
+                                </div>
+                            </div>
+                            
+                              <br>
+                             <input type="submit" value="Guardar" class="btn btn-primary" name="_save">
+                        </form>
+                        {{ mesaje }} 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}

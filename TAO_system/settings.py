@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'TAO_system.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'TAO_DB',
+        'NAME': 'TAO_PRUEBAS',
         'USER': 'root',
         'PASSWORD':'admin',
         'HOST': 'localhost',

@@ -29,7 +29,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             if user.groups.filter(name='Veterinarios'):
-                return redirect('registro_mascota')
+                return redirect('list_vet')
             elif user.groups.filter(name='Colaboradores'):
                 return redirect('registro_mascota')
             elif user.groups.filter(name='Director'):
@@ -64,7 +64,7 @@ def signup_view(request):
 
 def save_profile(sender, instance, created, **kwargs):
     if created:
-        g1 = Group.objects.get(name='adoptantes')
+        g1 = Group.objects.get(name='Adoptantes')
         instance.groups.add(g1)
 post_save.connect(save_profile, sender=User)
 

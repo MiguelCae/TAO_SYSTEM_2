@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 
 
+
 select_especie = [
     ('Gato', 'Gato'),
     ('Perro', 'Perro'),
@@ -16,9 +17,9 @@ select_sexo = [
     ('Macho', 'Macho'),
 ]
 select_estado = [
-    ('En_custodia','En custodia'),
-    ('En_tratamiento','En tratamiento'),
-    ('En_adopcion','En adopción'),
+    ('En custodia','En custodia'),
+    ('En tratamiento','En tratamiento'),
+    ('En adopcion','En adopción'),
     ('Adoptado','Adoptado'),
 
 ]
@@ -40,8 +41,8 @@ class mascota(models.Model):
         blank=False, null= False,
         choices=select_sexo
         )
-    edad_aproximada = models.IntegerField()
-    fecha_rescate = models.DateTimeField()
+    edad_aproximada = models.IntegerField(null=True)
+    fecha_rescate = models.DateTimeField(null=True)
     estado = models.CharField(max_length=20,
         blank=False, null= False,
         choices=select_estado
@@ -49,6 +50,9 @@ class mascota(models.Model):
     descripcion_mascota = models.CharField(max_length=120)
     foto_mascota = models.ImageField(upload_to='static/img')
     created = models.DateTimeField(auto_now=True)
+
+    
+
 
     def __str__(self):
        return self.nombre

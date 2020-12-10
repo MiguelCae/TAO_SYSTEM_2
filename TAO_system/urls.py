@@ -28,7 +28,17 @@ from django.conf.urls import include
 from apps.control_usuarios import views as send_email
 from apps.gestion_mascotas import views as import_data
 
+
+# Posts de adopción de mascotas
 from apps.adopcion.views import mascotaListView
+
+
+
+#Veterinario
+from apps.veterinario.views import  mascota_list_vet, date_historia_clinica, create_historia_clinica, vet_registro_mascota, vet_registro_list_mascota
+# VetMascotaListView
+
+
 
 
 
@@ -52,7 +62,7 @@ urlpatterns = [
     path('users/login/', user_views.login_view, name='login'),
     path('users/logout/', user_views.logout_view, name='logout'),
     path('users/signup/', user_views.signup_view, name='signup'),
-
+    
     
 
 
@@ -65,7 +75,14 @@ urlpatterns = [
     path('tao_admin/send_mail/', send_email.indexmail, name ='send_mail'),
     path('tao_admin/import_data/',import_data.importar, name='import_data'),
 
+#  Modulo veterinario
+    path('veterinario/',mascota_list_vet, name='list_vet'),
+    # path('veterinario/historia_clinica/<int:id>/', VetMascotaListView, name='paciente'),
+    path('veterinario/historia-clinica/<int:pk>', date_historia_clinica.as_view(), name='historia_clinica'),
+    path('veterinario/historia-clinica-create', create_historia_clinica.as_view(), name='historia_clinica_create'),
+    path('veterinario/registro-mascota', vet_registro_mascota, name= 'registro_mascota_veterinario'),
+    path('veterinario/list-mascota', vet_registro_list_mascota, name= 'list_mascota_veterinario'),
+
 
 ]
-
 

@@ -16,7 +16,7 @@ from django.views import generic
 class mascotaListView(generic.ListView):
     model = mascota
     context_object_name = 'mascota'
-    queryset = mascota.objects.filter(estado__icontains='En_adopcion')
+    queryset = mascota.objects.filter(estado__icontains='En adopcion')
     template_name = "post/post.html"
 
 
