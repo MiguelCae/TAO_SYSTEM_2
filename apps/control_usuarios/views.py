@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
-from django.core.mail import send_mail
+from django.core.mail import send_mail, send_mass_mail
 from django.conf import settings
 
 from django.db.models.signals import post_save
@@ -88,14 +88,17 @@ def send_email(mail, asunto, cuerpo):
 
 def indexmail(request):
     if request.method == 'POST':
-        mail = request.POST.get('mail')
+        # mail = User.objects.filter(is_active=True).exclude(email='').values_list('email', flat=True)
+        receiver = []
+        for user in User.objects.all():
+            receiver.append(user.email)
         asunto = request.POST.get('asunto')
         cuerpo = request.POST.get('cuerpo')
         send_mail(
             asunto,
             cuerpo,
             settings.EMAIL_HOST_USER,
-            [mail],
+            receiver,
             fail_silently=False
          )
     return render(request, 'mail.html', {})
