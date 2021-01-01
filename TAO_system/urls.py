@@ -45,6 +45,10 @@ from apps.veterinario.views import  mascota_list_vet, date_historia_clinica, cre
 #Control de usuarios de usuarios
 from apps.control_usuarios import views as user_views
 
+#Moidulo admin
+
+from apps.admin.views import chart1
+
 
 
 
@@ -82,6 +86,9 @@ urlpatterns = [
     path('veterinario/historia-clinica-create', create_historia_clinica.as_view(), name='historia_clinica_create'),
     path('veterinario/registro-mascota', vet_registro_mascota, name= 'registro_mascota_veterinario'),
     path('veterinario/list-mascota', vet_registro_list_mascota, name= 'list_mascota_veterinario'),
+
+# Modulo admin
+path('admin/dashboard', chart1, name = 'dashboard'),
 
 
 ]
