@@ -48,6 +48,10 @@ from apps.control_usuarios import views as user_views
 #Moidulo admin
 
 from apps.admin.views import chart1
+from apps.admin.views import DashboardView
+from apps.admin.views import report, report_pdf_view
+
+from apps.export.views import importar
 
 
 
@@ -88,7 +92,11 @@ urlpatterns = [
     path('veterinario/list-mascota', vet_registro_list_mascota, name= 'list_mascota_veterinario'),
 
 # Modulo admin
-path('admin/dashboard', chart1, name = 'dashboard'),
+    path('admin/dashboard', chart1, name = 'dashboard'),
+    path('admin/dashboard/2', DashboardView, name = 'line_chart'),
+    path('admin/reports', report, name = 'reportes'),
+    path('admin/reports/print', report_pdf_view.as_view(), name = 'print_report'),
+    path('admin/import', importar, name = 'import'),
 
 
 ]

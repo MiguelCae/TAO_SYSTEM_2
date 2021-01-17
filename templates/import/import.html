@@ -1,0 +1,36 @@
+{% extends 'base/base_workflow.html' %}
+
+
+
+{% block desk %}
+
+
+<div class="container ">
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Carga masiva de datos de las mascotas</h1>
+                    <img class="card-img-top shadow-mb" src="../../static/img/undraw_good_doggy_4wfq.png" alt="">
+                    
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <form method='POST' enctype="multipart/form-data" class="formcontrol">
+                            {% csrf_token %}
+                            <input type="file" name="xlsfile">
+                            <button class="btn btn-primary" type="submit">Enviar</button>
+                        </form>
+                        {% if succes %}
+                        <ul class="messages">
+                           {{'succes'}}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

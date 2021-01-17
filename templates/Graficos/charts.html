@@ -5,18 +5,19 @@
 
 <!-- Cards reports -->
 <div>
+    <div class="container col-sm-10">
     <div class="row">
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">Estatus de  las mascotas </h5>
+                    <p class="card-text">Aquí se muestran los datos de ocupación y estados de las mascotas en la fundación.</p>
+
                     <div>
                         <canvas id="myDoughnutChart" width="200" height="100"> Estado poblacional</canvas>
                     </div>
                     <br>
-                    <h4>Mascotas en adopcón {{ json | safe}}</h4>
+                    <h4>Mascotas en adopción {{ json | safe}}</h4>
                     <h4>Mascotas en custodia {{ json2 | safe}}</h4>
                     <h4>Mascotas en Tratamiento {{ json3| safe}}</h4>
                     <h4>Mascotas  Adoptadas {{ json4 | safe}}</h4>
@@ -51,11 +52,12 @@
                 <div class="card-body">
                     <h5 class="card-title">Special title treatment</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#" class="btn btn-primary"></a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
@@ -66,6 +68,9 @@
     var data2 = {{ json2 | safe}}
     var data3 = {{ json3 | safe}}
     var data4 = {{ json4 | safe}}
+    var jsonfile = {{ json5 | safe}}
+    // var jsonfile2 = {{ json6 | safe}}
+
     // data[0]["fields"].ATTRIBUTE
     var ctx = document.getElementById("myDoughnutChart");
     var myDoughnutChart = new Chart(ctx, {

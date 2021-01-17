@@ -16,6 +16,10 @@ from pathlib import Path
 from apps.control_usuarios.apps import ControlUsuariosConfig
 
 
+from django.contrib.messages import constants as messages
+
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -138,11 +142,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-IMPORT_EXPORT_USE_TRANSACTIONS = True  
+IMPORT_EXPORT_USE_TRANSACTIONS = True 
 
 
 CRISPY_TEMPLATEPACK = 'bootstrap4'
@@ -155,3 +159,12 @@ EMAIL_HOST_PASSWORD = 'oevp kihb qush lgsb'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 DEFAULT_TO_EMAIL = EMAIL_HOST_USER
+
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
