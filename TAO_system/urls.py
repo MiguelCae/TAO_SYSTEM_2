@@ -75,7 +75,7 @@ urlpatterns = [
 
 
 # Url's para administracion de la aplicación
-    path('tao_log/', gest_mascotas.log),
+
     path('tao_admin/list/', gest_mascotas.mascota_list, name='list'),
     path('tao_admin/registro-mascota', gest_mascotas.registro_mascota_view, name='registro_mascota'),
     path('tao_admin/editar-mascota/<int:id>/', gest_mascotas.mascota_edit, name='editar_mascota'),

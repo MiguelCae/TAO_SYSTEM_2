@@ -30,6 +30,7 @@ def mascota_list_vet(request):
     contexto = {'mascotas' : QS_mascota_v}
     return render(request, 'veterinario/list_veterinario.html', contexto)
 
+@login_required
 def vet_registro_mascota(request):
     if request.method == 'POST':
         form = RegistroMascota(request.POST or None, request.FILES)
@@ -41,6 +42,8 @@ def vet_registro_mascota(request):
         form = RegistroMascota()
     return render(request, 'veterinario/registro_veterinario.html', {'form': form})
 
+
+@login_required
 def vet_registro_list_mascota(request):
     QS_mascota = mascota.objects.all()
     contexto = {'mascotas' : QS_mascota}

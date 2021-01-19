@@ -79,6 +79,7 @@ def importar(request):
       nuevas_mascotas = request.FILES['xlsfile']
       imported_data = dataset.load(nuevas_mascotas.read())
       result = MascotaResource.import_data(dataset, dry_run=True)
+      return render(request, 'carga_datos.html', {'succes': 'Se cargaron los datos con exito'})
       if not result.has_errors():
           MascotaResource.import_data(dataset, dry_run=False)
     return render(request, 'carga_datos.html')  

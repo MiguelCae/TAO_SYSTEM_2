@@ -19,6 +19,7 @@ def importar(request):
         nuevas_mascotas = request.FILES['xlsfile']
         imported_data = dataset.load(nuevas_mascotas.read())
         result = form.import_data(dataset, dry_run=True)
+        return render(request, 'import/import.html', {'succes': 'Se cargaron los datos con exito'})
         if not result.has_errors():
             form.import_data(dataset, dry_run=False)
     return render(request, 'import/import.html')

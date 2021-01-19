@@ -22,9 +22,9 @@
                             <button class="btn btn-primary" type="submit">Enviar</button>
                         </form>
                         {% if succes %}
-                        <ul class="messages">
-                           {{'succes'}}
-                        </ul>
+                        <div class="alert alert-success" role="alert">
+                           {{ succes }}
+                       </div>
                         {% endif %}
                     </div>
                 </div>

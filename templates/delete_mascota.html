@@ -8,19 +8,28 @@
 <div class="container-fluid">
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-  <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information
-    about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables
-      documentation</a>.</p>
-  <form method="POST">
-    {% csrf_token %}
-    <h3>¿Desea eliminar el registro de {{ QS_mascota.nombre }}?</h3>
-    <button class="btn btn-danger"  type="submit">Sí</button>
-    <a class="btn btn-primary"  href=" {% url 'list' %} ">No</a>
 
-  </form>
+  <div class="container ">
+    <div class="row">
+      <div class="col-sm-9">
+        <div class="card mb-3 shadow" style="width: 18rem;">
+          <img class="card-img-top shadow-mb" src="../static/img/beagle-t.jpg" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <form method="POST">
+              {% csrf_token %}
+              <h3>¿Desea eliminar el registro de {{ QS_mascota.nombre }}?</h3>
+              <button class="btn btn-danger" type="submit">Sí</button>
+              <a class="btn btn-primary" href=" {% url 'list' %} ">No</a>
 
- 
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 
 </div>
