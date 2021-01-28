@@ -58,6 +58,7 @@ class date_historia_clinica(DetailView, UpdateView, CreateView, FormView, LoginR
     context_object_name = 'paciente'
     form_class = estado_mascota_form
     success_url = reverse_lazy('list_vet')
+    
 
 
 

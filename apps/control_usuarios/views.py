@@ -34,7 +34,7 @@ def login_view(request):
             elif user.groups.filter(name='Colaboradores'):
                 return redirect('registro_mascota')
             elif user.groups.filter(name='Director'):
-                return redirect('list')
+                return redirect('dashboard')
             else:
                 return redirect ('Home')
         else:
@@ -60,7 +60,7 @@ def signup_view(request):
         user.save()
         profile = Profile(user=user)
         profile.save()
-        return redirect('login')
+        return render(request,'registration/login.html',{'succes':'¡Reistro exitoso!'})
     return render(request,'registration/registro.html')
 
 def save_profile(sender, instance, created, **kwargs):

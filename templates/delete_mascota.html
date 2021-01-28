@@ -15,7 +15,6 @@
         <div class="card mb-3 shadow" style="width: 18rem;">
           <img class="card-img-top shadow-mb" src="../static/img/beagle-t.jpg" alt="">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
             <form method="POST">
               {% csrf_token %}
               <h3>¿Desea eliminar el registro de {{ QS_mascota.nombre }}?</h3>

@@ -48,6 +48,17 @@ def chart1(request):
     qs = mascota.objects.all()
     datos_mensuales = serialize('json', qs, fields = 'fecha_rescate' )
     total_datos = datos_mensuales.count('pk')
+
+    gatos = mascota.objects.filter(especie__icontains = 'Gato').count()
+    perros = mascota.objects.filter(especie__icontains = 'Perro').count()
+    total_mascotas = perros + gatos
+
+    hembras = mascota.objects.filter(sexo__icontains = 'Hembra')
+    machos = mascota.objects.filter(sexo__icontains = 'Macho')
+    gatos_hembra = hembras.filter(especie__icontains = 'Gato').count()
+    gatos_macho = machos.filter(especie__icontains = 'Gato').count()
+    perros_hembra = hembras.filter(especie__icontains = 'Perro').count()
+    perros_macho = machos.filter(especie__icontains = 'Perro').count()
     context = {
         "json" : adopcion_data,
         "json2": custodia_data,
@@ -55,6 +66,13 @@ def chart1(request):
         "json4": adoptado_data,
         "json5": datos_mensuales,
         "json6": total_datos,
+        'total_gatos': gatos,
+        'total_perros': perros,
+        'total_gatos_hembras': gatos_hembra,
+        'total_gatos_machos':  gatos_macho,
+        'total_perros_hembras':   perros_hembra,
+        'total_perros_machos':  perros_macho,
+        'total_mascotas' : total_mascotas,
 
         }
     return render(request, 'Graficos/charts.html', context)

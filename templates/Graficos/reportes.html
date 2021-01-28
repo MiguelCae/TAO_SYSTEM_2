@@ -1,4 +1,7 @@
 {% extends 'base/base_workflow.html' %}
+{% load static %}
+
+
 
 {% block Sidebar %}
 
@@ -45,12 +48,44 @@
                                     <br>
                                     <h4 class="card-text">En este reporte se muestran los diferentes datos
                                         correspondientes al estado poblacional de las mascotas en la fundación.</h4>
-                                        <button onclick="window.print()">Print</button>
-
+                                        <button class="btn btn-primary" onclick="window.print()">Imprimir</button>
                             </div>
                         </div>
                         <br>
                     </div>
+
+                    <!-- Total mascotas -->
+                 <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <h2>Perros</h2>
+                                    <img src="{% static 'img/undraw_Cautious_dog_q83f.png' %}" class="img-fluid card-img-top" width="100px" height="100px" alt="My image" style="width: 250px; height: 200px;">
+                                    <h1>
+                                        <strong> 
+                                            {{ total_perros | safe}} 
+                                        </strong> 
+                                    </h1>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <h2>Gatos</h2>
+                                    <img src="{% static 'img/undraw_Playful_cat_rchv.png' %}" class="img-fluid card-img-top" width="50px" height="50px" alt="My image" style="width: 250px; height: 200px;">
+                                    <h1>
+                                        <strong>
+                                        {{ total_gatos | safe}}
+                                    </strong>
+                                </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     <div class="col-sm-12">
                         <div class="card shadow">
                             <div class="card-body">
@@ -96,33 +131,6 @@
                         </div>
                     </div>
                     <br>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="card shadow">
-                            <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional
-                                    content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                                <div>
-                                    <canvas id="myDoughnutChart" width="200" height="100"> Estado poblacional</canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card shadow">
-                            <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional
-                                    content.</p>
-                                <a href="#" class="btn btn-primary"></a>
-                               
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

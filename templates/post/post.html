@@ -28,9 +28,18 @@
               <h4 class="card-title ">{{ queryset.nombre }}</h4>
               <p class="card-text">{{ queryset.descripcion_mascota }}</p>
             </div>
+            
+            {% if user.is_authenticated %}
             <div class="card-footer ">
               <a href=" {% url 'signup' %} " class="btn shadow-lg btn-primary">Adóptame</a>
             </div>
+            {% else %}
+
+            <div class="card-footer ">
+              <a href=" {% url 'login' %} " class="btn shadow-lg btn-primary">Adóptame</a>
+            </div>
+
+            {% endif %}
           </div>
         </div>
     </div>

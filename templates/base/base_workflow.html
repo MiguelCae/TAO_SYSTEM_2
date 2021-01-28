@@ -31,9 +31,18 @@
 
 
   <!-- charts.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+    integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+    crossorigin="anonymous"></script>
+    
+
+  <!-- Tempus Bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" integrity="sha256-XPTBwC3SBoWHSmKasAk01c08M6sIA5gF5+sRxqak2Qs=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js" integrity="sha256-z0oKYg6xiLq3yJGsp/LsY9XykbweQlHl42jHv2XTBz4=" crossorigin="anonymous"></script>
 
 
+   <!-- Moment.js -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js" integrity="sha256-VBLiveTKyUZMEzJd6z2mhfxIqz3ZATCuVMawPZGzIfA=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -46,10 +55,11 @@
 
     <!-- Sidebar -->
     <ul style="background: rgb(38,11,88);
-    background: linear-gradient(42deg, rgba(38,11,88,1) 0%, rgba(138,5,190,1) 57%, rgba(38,11,88,1) 100%);" ; class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    background: linear-gradient(42deg, rgba(38,11,88,1) 0%, rgba(138,5,190,1) 57%, rgba(38,11,88,1) 100%);" ;
+      class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'list' %}">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'dashboard' %}">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-paw"></i>
         </div>
@@ -71,7 +81,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Interface
+        Acciones
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -86,56 +96,58 @@
             <h6 class="collapse-header">Acciones:</h6>
             <a class="collapse-item" href="{% url 'registro_mascota' %}">Registar mascota</a>
             <a class="collapse-item" href="{% url 'list' %}">Mascotas registradas</a>
+            
           </div>
         </div>
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
+      {% if perms.control_usuarios.view_rol %}
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
           aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-mail-bulk"></i>
           <span>Comunicaciones</span>
         </a>
+        
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
+            
+            
+            
+              
+            
+              
             <h6 class="collapse-header">Comunicaciones</h6>
+
+
+            
             <a class="collapse-item" href=" {% url 'send_mail' %} ">Enviar correo</a>
             <!-- <a class="collapse-item" href="utilities-border.html">Borders</a>
             <a class="collapse-item" href="utilities-animation.html">Animations</a>
             <a class="collapse-item" href="utilities-other.html">Other</a> -->
           </div>
         </div>
-      </li>
+      
+          
+        {% endif %}
+          
 
       <!-- Divider -->
       <hr class="sidebar-divider">
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Addons
+        Utilidades
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-          aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item active" href="blank.html">Blank Page</a>
-          </div>
-        </div>
-      </li>
+        <!-- Carag masiva de Datos -->
+        <li class="nav-item">
+          <a class="nav-link" href=" {% url 'import' %} ">
+            <i class="fas fa-file-excel"></i>
+            <span>Carga masiva de datos</span></a>
+        </li>
+
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
@@ -144,17 +156,7 @@
           <span>Posts de mascotas</span></a>
       </li>
 
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href=" {% url 'Home' %} ">
-          <i class="fas fa-fw fa-table"></i>
-          <span></span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href=" {% url 'Home' %} ">
-          <i class="fas fa-home"></i>
-          <span>Posts de mascotas</span></a>
-      </li>
+      
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -166,7 +168,7 @@
 
     </ul>
     <!-- End of Sidebar -->
-   {% endblock %}
+    {% endblock %}
 
 
 
@@ -192,8 +194,10 @@
               <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar" aria-label="Search"
                 aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button style="background: rgb(138,5,190);
-                background: linear-gradient(90deg, rgba(138,5,190,1) 0%, rgba(58,50,185,1) 51%, rgba(138,5,190,1) 92%);border: #8a05be;" class="btn btn-primary" type="button">
+                <button
+                  style="background: rgb(138,5,190);
+                background: linear-gradient(90deg, rgba(138,5,190,1) 0%, rgba(58,50,185,1) 51%, rgba(138,5,190,1) 92%);border: #8a05be;"
+                  class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -346,9 +350,11 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.first_name }} {{ user.last_name }} </span>
-
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.first_name }} {{ user.last_name }}
+                </span>
+                <span style="font-size: 2rem;">
+                  <i class="fas fa-user"></i>
+                </span>
                 {% else %}
             <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
             {% endif %}
@@ -376,7 +382,7 @@
         </nav>
         <!-- End of Topbar -->
 
-        {% endblock  %}
+        {% endblock %}
 
         {% block desk %}
 
@@ -400,7 +406,7 @@
       <footer class="sticky-footer bg-white ">
         <div class="container my-auto align-items-end">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy;  TAO System 2020</span>
+            <span>Copyright &copy; TAO System 2020</span>
           </div>
         </div>
       </footer>
@@ -412,7 +418,7 @@
   </div>
   <!-- End of Page Wrapper -->
 
-  {% endblock  %}
+  {% endblock %}
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
@@ -436,13 +442,13 @@
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
           <!-- ?next={{request.path}} -->
-          <a href="{% url 'logout'%}">Cerrar sesión</a> 
+          <a href="{% url 'logout'%}">Cerrar sesión</a>
         </div>
       </div>
     </div>
   </div>
 
-  {% endblock  %}
+  {% endblock %}
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -472,10 +478,16 @@
   <script src=" {% static 'js/demo/datatables-demo.js' %} "></script>
 
 
-  
 
-  
 
+
+  <script>
+    $(function () {
+      $("#datetimepicker1").datetimepicker({
+        format: 'DD/MM/YYYY HH:mm',
+      });
+    });
+  </script>
 
 </body>
 

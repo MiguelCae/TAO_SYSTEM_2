@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from apps.gestion_mascotas.models import mascota
+from apps.adopcion.models import perfil_adoptante
 
 
 from django.views import generic
@@ -18,6 +19,12 @@ class mascotaListView(generic.ListView):
     context_object_name = 'mascota'
     queryset = mascota.objects.filter(estado__icontains='En adopcion')
     template_name = "post/post.html"
+    def adoptar(request):
+        if request.method == 'POST':
+            circulo_familiar = request.POST['cf']
+            experiencia_mascotas = request.POST['em']
+            hijos = request['hijos']
+        return render(request, 'adopcion/form.html')
 
 
 

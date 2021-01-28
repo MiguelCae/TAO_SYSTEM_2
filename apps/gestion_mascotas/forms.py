@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import ModelForm, Textarea, DateTimeInput, TextInput, Select, NumberInput, DateInput
+from django.forms import ModelForm, Textarea, DateTimeInput, TextInput, Select, NumberInput, DateInput, HiddenInput
 
 
 #Models
@@ -33,7 +33,10 @@ class RegistroMascota(ModelForm):
             'tamaño':  Select(attrs={'class': 'form-control'}),
             'sexo':  Select(attrs={'class': 'form-control'}),
             'edad_aproximada' :  NumberInput(attrs={'class': 'form-control'}),
-             'fecha_recate': DateTimeInput(attrs={'class': 'form-control'}),
+            'fecha_rescate': HiddenInput(attrs={
+                'class': 'form-control datetimepicker-input',
+                'data-target': '#datetimepicker1' 
+                }),
             'estado':  Select(attrs={'class': 'form-control'}),
             'descripcion_mascota': Textarea(attrs={'class': 'form-control','cols': 40, 'rows': 5}),
             

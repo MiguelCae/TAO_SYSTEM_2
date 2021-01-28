@@ -1,65 +1,112 @@
 {% extends 'base/base_workflow.html' %}
 
+{% load static %}
+
 {% block desk %}
 
 
 <!-- Cards reports -->
-<div>
-    <div class="container col-sm-10">
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Estatus de  las mascotas </h5>
-                    <p class="card-text">Aquí se muestran los datos de ocupación y estados de las mascotas en la fundación.</p>
+<!-- Cards reports -->
+<div class="container">
+    <div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h1 class="card-title">
+                            <strong> <br> Reporte estatus de las mascotas en la fundación
+                                <h1 class="display-1">Patitas Callejeras</h1>
+                            </strong>
+                            </h2>
+                            <br>
+                            <h4 class="card-text">En este reporte se muestran los diferentes datos
+                                correspondientes al estado poblacional de las mascotas en la fundación.</h4>
+                                <a class="btn btn-primary" href="{% url 'print_report' %}" target="blank">Imprimir</a>
+                    </div>
+                </div>
+                <br>
+            </div>
 
-                    <div>
-                        <canvas id="myDoughnutChart" width="200" height="100"> Estado poblacional</canvas>
+            <!-- Total mascotas -->
+         <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h2 class="display-3">Perros</h2>
+                            <img src="{% static 'img/undraw_Cautious_dog_q83f.png' %}" class="img-fluid card-img-top" width="120px" height="100px" alt="My image" style="width: 260px; height: 200px;">
+                            <h1 class="text-end display-1">
+                                <strong> 
+                                    {{ total_perros | safe}} 
+                                </strong> 
+                            </h1>
+                        </div>
                     </div>
                     <br>
-                    <h4>Mascotas en adopción {{ json | safe}}</h4>
-                    <h4>Mascotas en custodia {{ json2 | safe}}</h4>
-                    <h4>Mascotas en Tratamiento {{ json3| safe}}</h4>
-                    <h4>Mascotas  Adoptadas {{ json4 | safe}}</h4>
                 </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    <div>
-                        <canvas id="myDoughnutChart" width="200" height="100"> Estado poblacional</canvas>
+                <div class="col-sm-6">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h2 class="display-3 ">Gatos</h2>
+                            <img src="{% static 'img/undraw_Playful_cat_rchv.png' %}" class="img-fluid card-img-top" width="50px" height="50px" alt="My image" style="width: 250px; height: 200px;">
+                            <h1 class="display-1">
+                                <strong>
+                                {{ total_gatos | safe}}
+                            </strong>
+                        </h1>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary"></a>
+            <div class="col-sm-12">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <br>
+                        <h4 class="card-text">En la fundacion Patitas Callejeras hay una <strong>población
+                                total</strong> de <strong>{{ total_mascotas | safe }} mascotas,</strong> donde
+                            <strong> {{ total_perros | safe}} </strong> son <strong>perros</strong> y <strong>
+                                {{ total_gatos | safe}}</strong> son <strong>gatos.</strong> </h4>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="col-sm-6">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h3 class="card-title">Estatus poblacional de las mascotas </h3>
+                        <p class="card-text">Aquí se muestran los datos de ocupación y estados de las mascotas
+                            en la fundación.</p>
+                        <div>
+                            <canvas id="myDoughnutChart" width="200" height="100"> Estado poblacional</canvas>
+                        </div>
+                        <br>
+                        <h5>Mascotas en adopción {{ json | safe}}</h5>
+                        <h5>Mascotas en custodia {{ json2 | safe}}</h5>
+                        <h5>Mascotas en Tratamiento {{ json3| safe}}</h5>
+                        <h5>Mascotas Adoptadas {{ json4 | safe}}</h5>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="col-sm-6">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h3 class="card-title">Estado de genero de las mascotas.</h3>
+                        <p class="card-text">Estos datas proporcionan información de la cantidad de mascotas por
+                            genero y especie de lashttp://127.0.0.1:8000/admin/login/?next=/admin/ mascotas.</p>
+                        <br>
+                        <div>
+                            <canvas id="myBarChart" width="200" height="100"> Estado poblacional</canvas>
+                        </div>
+                        <h5> El total de <strong>GATOS</strong> en la fundación es de <strong>{{ total_gatos |safe}}</strong> </h5>
+                    </div>
                 </div>
             </div>
+            <br>
         </div>
     </div>
 </div>
-</div>
-
 
 
 
@@ -92,5 +139,49 @@
 
     });
 </script>
+
+
+<script type="text/javascript">
+    var data_g_h = {{ total_gatos_hembras | safe}}
+    var data_g_m = {{ total_gatos_machos | safe}}
+    var data_p_h = {{ total_perros_hembras | safe}}
+    var data_p_m = {{ total_perros_machos | safe}}
+    var ctx = document.getElementById("myBarChart");
+    var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Gatos', 'Perros'],
+            datasets: [{
+                label: 'Hembras',
+                data: [data_g_h, data_p_h],
+                backgroundColor: "rgba(138,5,190,1)",
+            },
+            {
+                label: 'Machos',
+                data: [data_g_m, data_p_m],
+                backgroundColor: "rgba(38,11,88,1)",
+
+            }
+            ]
+        },
+        options: {
+            legend: {
+                display: true
+            },
+
+            scales: {
+                xAxes: [{
+                    stacked: true
+                }],
+                yAxes: [{
+                    stacked: true
+                }]
+            }
+        }
+
+
+    });
+</script>
+
 
 {% endblock %}

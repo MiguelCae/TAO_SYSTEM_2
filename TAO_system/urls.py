@@ -81,7 +81,7 @@ urlpatterns = [
     path('tao_admin/editar-mascota/<int:id>/', gest_mascotas.mascota_edit, name='editar_mascota'),
     path('tao_admin/eliminar-mascota/<int:id>/', gest_mascotas.mascota_delete, name='eliminar_mascota'),
     path('tao_admin/send_mail/', send_email.indexmail, name ='send_mail'),
-    path('tao_admin/import_data/',import_data.importar, name='import_data'),
+    # path('tao_admin/import_data/',import_data.importar, name='import_data'),
 
 #  Modulo veterinario
     path('veterinario/',mascota_list_vet, name='list_vet'),
@@ -92,11 +92,11 @@ urlpatterns = [
     path('veterinario/list-mascota', vet_registro_list_mascota, name= 'list_mascota_veterinario'),
 
 # Modulo admin
-    path('admin/dashboard', chart1, name = 'dashboard'),
-    path('admin/dashboard/2', DashboardView, name = 'line_chart'),
-    path('admin/reports', report, name = 'reportes'),
-    path('admin/reports/print', report_pdf_view.as_view(), name = 'print_report'),
-    path('admin/import', importar, name = 'import'),
+    path('tao_admin/dashboard', chart1, name = 'dashboard'),
+    path('tao_admin/dashboard/2', DashboardView, name = 'line_chart'),
+    path('tao_admin/reports', report, name = 'reportes'),
+    path('tao_admin/reports/print', report_pdf_view.as_view(), name = 'print_report'),
+    path('tao_admin/import', importar, name = 'import'),
 
 
 ]

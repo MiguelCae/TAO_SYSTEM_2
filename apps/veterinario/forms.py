@@ -18,7 +18,7 @@ class estado_mascota_form(ModelForm):
        
     
         fields = (
-            'historia_clinica',
+            # 'historia_clinica',
             'r_historia_clinica',
         )
         widgets = {

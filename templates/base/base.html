@@ -45,6 +45,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}">Registrarse</a>
+                    </li>
                     <li>
                         <!-- Example split danger button -->
                         <div class="btn-group">
@@ -54,11 +57,31 @@
                                 <i class="fas fa-user fa-fw dropdown-toggle dropdown-toggle-split"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                             </a>
-
-                            <div class="dropdown-menu">
+                            
+                   
+                            
+                            {% if user.is_authenticated %} 
+                                 
+                                {% if perms.control_usuarios.view_rol %}
+                            
+                             <div class="dropdown-menu">
+                                
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'dashboard' %}">TAO System</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a>
+                                {% endif %}
+                                <div class="dropdown-menu">
+                                 <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a>
+                            </div>
+                            </div>
+                            {% endif %}
+                             <div class="dropdown-menu">
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{% url 'login' %}">Iniciar sesión</a>
                             </div>
+                            
                         </div>
                     </li>
                 </ul>

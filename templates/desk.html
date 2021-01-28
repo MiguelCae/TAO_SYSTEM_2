@@ -65,7 +65,11 @@
               <td>{{ QS_mascota.descripcion_mascota }}</td>
               <td>
                 <a class="fas fa-edit" href="{% url 'editar_mascota' QS_mascota.id %}"></a>
+                {% if perms.control_usuarios.view_rol %}
                 <a class="fas fa-trash-alt" href="{% url 'eliminar_mascota' QS_mascota.id %}"></a>
+                  
+                {% endif %}
+                  
               </td>
             </tr>
             {% endfor %}
