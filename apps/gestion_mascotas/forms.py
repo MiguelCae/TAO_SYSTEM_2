@@ -14,7 +14,7 @@ class RegistroMascota(ModelForm):
         model = mascota
        
     
-        fields = (
+        fields =(
             'nombre',
             'especie', 
             'raza',

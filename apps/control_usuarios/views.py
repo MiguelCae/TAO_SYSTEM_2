@@ -59,8 +59,11 @@ def signup_view(request):
         user.last_name = request.POST['Apellidos']
         user.save()
         profile = Profile(user=user)
-        profile.save()
-        return render(request,'registration/login.html',{'succes':'¡Reistro exitoso!'})
+        if profile is None:
+            profile.save()
+            return render(request,'registration/login.html',{'succes':'¡Reistro exitoso!'})
+        else:
+            return render(request,'registration/login.html',{'warning':'¡Por favor complete los datos!'})
     return render(request,'registration/registro.html')
 
 def save_profile(sender, instance, created, **kwargs):

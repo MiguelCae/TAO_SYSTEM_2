@@ -30,7 +30,7 @@ from apps.gestion_mascotas import views as import_data
 
 
 # Posts de adopción de mascotas
-from apps.adopcion.views import mascotaListView
+from apps.adopcion.views import mascotaListView, adoptar
 
 
 
@@ -64,6 +64,7 @@ urlpatterns = [
 #Url de pagina principal, publica
     path('',mascotaListView.as_view(), name='Home'),
     path('about/', posts_views.about),
+    path('adopcion/adoptar/<int:id>/',posts_views.adoptar, name='adopcion_form'),
     path('adopt-info/', posts_views.adopt_info),
     path('services/', posts_views.services),
     path('contact/', posts_views.contact),

@@ -1,7 +1,13 @@
-from django.shortcuts import render
+from apps.gestion_mascotas.forms import RegistroMascota
+from django.contrib.auth.decorators import login_required
+from django.http.response import HttpResponseRedirect
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from apps.gestion_mascotas.models import mascota
 from apps.adopcion.models import perfil_adoptante
+from apps.control_usuarios.models import Profile
+# form
+from apps.adopcion.forms import formulario_adopcion
 
 
 from django.views import generic
@@ -19,12 +25,23 @@ class mascotaListView(generic.ListView):
     context_object_name = 'mascota'
     queryset = mascota.objects.filter(estado__icontains='En adopcion')
     template_name = "post/post.html"
-    def adoptar(request):
-        if request.method == 'POST':
-            circulo_familiar = request.POST['cf']
-            experiencia_mascotas = request.POST['em']
-            hijos = request['hijos']
-        return render(request, 'adopcion/form.html')
+    
+    
+@login_required   
+def adoptar(request, id):
+    queryset = mascota.objects.get(id = id)
+    if request.method == 'POST':
+        form = formulario_adopcion(request.POST or None)
+        if form.is_valid():
+            form.save()
+        return redirect('Home')
+    else:
+        form = formulario_adopcion()
+    context = {
+        'form_adopcion': form,
+        'queryset' : queryset
+        }
+    return render (request,'adopcion/form_adopcion.html', context)
 
 
 
