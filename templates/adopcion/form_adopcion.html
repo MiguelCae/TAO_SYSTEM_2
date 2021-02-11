@@ -38,7 +38,7 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4"> <strong> {{ queryset.nombre }}</strong></h1>
               </div>
-              <form method="POST" enctype="multipart/form-data">
+              <form method="POST"  >
                 {% csrf_token %}
                 <div class="form-row ">
                   <div class="form-grop col-md-12">
@@ -138,19 +138,31 @@
                     <div class="form-row "></div>
                   </div>
                 </div>
+                <br>
+                <br>
+
                 <div class="form-row ">
-                  <div class="form-grop col-md-12">
-                    <label></label>
-                    {{ form_adopcion.acepta_terminos}}
-                    
-                    <div class="form-row "></div>
+                  <div class="form-grop col-md-6">
+
+                    <a href=""><small> Acepta términos y conciciones</small></a> 
+
+                    <div class="form-grop col-md-2">
+                    <small>{{ form_adopcion.acepta_terminos}}</small>
+                   <br>
+                   </div>
+                   <div class="form-row ">
+                    <div class="form-grop col-md-12">
+                        <label for=""></label>
+                        <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                        <small id="helpId" class="form-text text-muted">Help text</small>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-                <br>
-                <input type="submit" value="Guardar" class="btn btn-primary" name="_save">
+            <input type="submit" value="Guardar" class="btn btn-primary" name="_save">
               </form>
 
 

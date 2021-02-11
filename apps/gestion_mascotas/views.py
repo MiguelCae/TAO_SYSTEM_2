@@ -5,8 +5,7 @@ from django.urls import reverse
 
 from .sources import Mascota_resource
 
-# Carga inicial de datos
-from tablib import Dataset 
+
 
 
 from django.contrib import messages

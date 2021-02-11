@@ -52,8 +52,8 @@ INSTALLED_APPS = [
     'apps.veterinario',
     'crispy_forms',
     'import_export',
+ 
     
-
 
 
 ]
