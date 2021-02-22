@@ -11,13 +11,12 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 # new
-import os 
+import os
 from pathlib import Path
 from apps.control_usuarios.apps import ControlUsuariosConfig
 
 
 from django.contrib.messages import constants as messages
-
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -52,8 +51,8 @@ INSTALLED_APPS = [
     'apps.veterinario',
     'crispy_forms',
     'import_export',
- 
-    
+
+
 
 
 ]
@@ -96,11 +95,11 @@ WSGI_APPLICATION = 'TAO_system.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'TAO_PRUEBAS',
-        'USER': 'root',
-        'PASSWORD':'admin',
-        'HOST': 'localhost',
-        'PORT':'3306',
+        'NAME': 'TAO_DB',
+        'USER': 'admin',
+        'PASSWORD': '970218Macae',
+        'HOST': 'taodb.cxehinfsptzd.sa-east-1.rds.amazonaws.com',
+        'PORT': '3306',
     }
 }
 
@@ -146,7 +145,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-IMPORT_EXPORT_USE_TRANSACTIONS = True 
+IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 
 CRISPY_TEMPLATEPACK = 'bootstrap4'
