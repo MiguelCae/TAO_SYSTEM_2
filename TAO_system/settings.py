@@ -97,7 +97,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'TAO_DB',
         'USER': 'admin',
-        'PASSWORD': '970218Macae',
+        'PASSWORD': '**********',
         'HOST': 'taodb.cxehinfsptzd.sa-east-1.rds.amazonaws.com',
         'PORT': '3306',
     }
